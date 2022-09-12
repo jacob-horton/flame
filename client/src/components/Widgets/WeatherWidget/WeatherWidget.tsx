@@ -68,7 +68,6 @@ export const WeatherWidget = (): JSX.Element => {
             </div>
             <div className={classes.WeatherDetails}>
               {/* TEMPERATURE */}
-              {/* TODO ICONS */}
               {config.isCelsius ? (
                 <span>{weather.tempC}°C</span>
               ) : (

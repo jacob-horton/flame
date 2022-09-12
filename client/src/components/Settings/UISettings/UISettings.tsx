@@ -101,6 +101,8 @@ export const UISettings = (): JSX.Element => {
           <option value={0}>False</option>
         </select>
       </InputGroup>
+
+      {/* CLEAR SEARCHBAR */}
       <InputGroup>
         <label htmlFor={"autoClearSearch"}>Automatically clear the search bar</label>
         <select
