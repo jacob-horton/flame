@@ -179,6 +179,7 @@ export const WeatherSettings = (): JSX.Element => {
         >
           <option value="cloud">Cloud coverage</option>
           <option value="humidity">Humidity</option>
+          <option value="rain">Rain percentage</option>
         </select>
       </InputGroup>
 

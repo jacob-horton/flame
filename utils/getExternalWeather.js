@@ -14,6 +14,10 @@ const getExternalWeather = async () => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${secret}&units=${units}`
     );
 
+    const resRain = await axios.get(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&cnt=1&appid=${secret}`
+    );
+
     // Save weather data
     const cursor = res.data;
     const isDay = (Math.floor(Date.now()/1000) < cursor.sys.sunset) | 0
@@ -28,6 +32,7 @@ const getExternalWeather = async () => {
       humidity: cursor.main.humidity,
       windK: cursor.wind.speed,
       windM: 0,
+      rain: resRain.data.list[0].pop * 100,
     });
     return weatherData;
   } catch (err) {

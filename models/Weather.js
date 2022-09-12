@@ -14,6 +14,7 @@ const Weather = sequelize.define(
     humidity: DataTypes.INTEGER,
     windK: DataTypes.FLOAT,
     windM: DataTypes.FLOAT,
+    rain: DataTypes.INTEGER,
   },
   {
     tableName: 'weather',
