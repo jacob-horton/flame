@@ -1,16 +1,18 @@
 # Flame
 
+![Homescreen screenshot](.github/home.png)
+
 ## CHANGES
 This is a slightly modified version of [pawelmalak's flame](https://hub.docker.com/r/pawelmalak/flame)
+
 IMPORTANT: This will not be maintained, it was just to implement features I found useful
+
 Differences:
 - Switched to using Open Weather API
 - Fixed bug so open in same tab works when pressing enter
 - Allows navigation back to flame when clicking a link
 - Can show the rain percentage (for the next 3h) instead of humidity or cloud coverage
 - Search bar is cleared after enter is pressed
-
-![Homescreen screenshot](.github/home.png)
 
 ## Description
 
