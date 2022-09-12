@@ -1,5 +1,15 @@
 # Flame
 
+## CHANGES
+This is a slightly modified version of [pawelmalak's flame](https://hub.docker.com/r/pawelmalak/flame)
+IMPORTANT: This will not be maintained, it was just to implement features I found useful
+Differences:
+- Switched to using Open Weather API
+- Fixed bug so open in same tab works when pressing enter
+- Allows navigation back to flame when clicking a link
+- Can show the rain percentage (for the next 3h) instead of humidity or cloud coverage
+- Search bar is cleared after enter is pressed
+
 ![Homescreen screenshot](.github/home.png)
 
 ## Description
@@ -18,25 +28,7 @@ Flame is self-hosted startpage for your server. Its design is inspired (heavily)
 ## Installation
 
 ### With Docker (recommended)
-
-[Docker Hub link](https://hub.docker.com/r/pawelmalak/flame)
-
-```sh
-docker pull pawelmalak/flame
-
-# for ARM architecture (e.g. RaspberryPi)
-docker pull pawelmalak/flame:multiarch
-
-# installing specific version
-docker pull pawelmalak/flame:2.0.0
-```
-
-#### Deployment
-
-```sh
-# run container
-docker run -p 5005:5005 -v /path/to/data:/app/data -e PASSWORD=flame_password pawelmalak/flame
-```
+There is no Docker Hub image for this fork, you must compile from source
 
 #### Building images
 
@@ -52,6 +44,13 @@ docker buildx build \
   -t flame:multiarch .
 ```
 
+#### Deployment
+
+```sh
+# run container
+docker run -p 5005:5005 -v /path/to/data:/app/data -e PASSWORD=flame_password flame
+```
+
 #### Docker-Compose
 
 ```yaml
@@ -59,7 +58,7 @@ version: '3.6'
 
 services:
   flame:
-    image: pawelmalak/flame
+    image: flame
     container_name: flame
     volumes:
       - /path/to/host/data:/app/data
@@ -123,7 +122,7 @@ Follow instructions from wiki: [Installation without Docker](https://github.com/
 
 ```sh
 # clone repository
-git clone https://github.com/pawelmalak/flame
+git clone https://github.com/jacob-horton/flame
 cd flame
 
 # run only once
@@ -159,7 +158,7 @@ For list of supported search engines, shortcuts and more about searching functio
 
 ### Setting up weather module
 
-1. Obtain API Key from [Weather API](https://www.weatherapi.com/pricing.aspx).
+1. Obtain API Key from [Weather API](https://www.openweatherapi.org/api).
    > Free plan allows for 1M calls per month. Flame is making less then 3K API calls per month.
 2. Get lat/long for your location. You can get them from [latlong.net](https://www.latlong.net/convert-address-to-lat-long.html).
 3. Enter and save data. Weather widget will now update and should be visible on Home page.
