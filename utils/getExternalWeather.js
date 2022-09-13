@@ -23,8 +23,8 @@ const getExternalWeather = async () => {
     const isDay = (Math.floor(Date.now()/1000) < cursor.sys.sunset) | 0
     const weatherData = await Weather.create({
       externalLastUpdate: cursor.dt,
-      tempC: cursor.main.temp,
-      tempF: cursor.main.temp,
+      tempC: Math.round(cursor.main.temp),
+      tempF: Math.round(cursor.main.temp),
       isDay: isDay,
       cloud: cursor.clouds.all,
       conditionText: cursor.weather[0].main,
@@ -32,7 +32,7 @@ const getExternalWeather = async () => {
       humidity: cursor.main.humidity,
       windK: cursor.wind.speed,
       windM: 0,
-      rain: resRain.data.list[0].pop * 100,
+      rain: Math.round(resRain.data.list[0].pop * 100),
     });
     return weatherData;
   } catch (err) {
