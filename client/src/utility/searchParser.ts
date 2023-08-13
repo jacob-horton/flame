@@ -1,9 +1,11 @@
-import { queries } from './searchQueries.json';
+import searchQueries from './searchQueries.json';
 import { SearchResult } from '../interfaces';
 import { store } from '../store/store';
 import { isUrlOrIp } from '.';
 
 export const searchParser = (searchQuery: string): SearchResult => {
+  const queries = searchQueries.queries;
+
   const result: SearchResult = {
     isLocal: false,
     isURL: false,
@@ -54,6 +56,8 @@ export const searchParser = (searchQuery: string): SearchResult => {
     if (prefix === 'l') {
       result.isLocal = true;
     }
+    result.sameTab = config.searchSameTab;
+
     result.sameTab = config.searchSameTab;
 
     if (secondarySearch) {
